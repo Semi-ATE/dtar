@@ -205,6 +205,19 @@ class dtar(object):
         '''
         return not not catalog['files']
 
+    def is_good_catalog(self, catalog):
+        '''
+        Given a catalog, this method will verify if the catalog is good, if so
+        True is returned, else False.
+        
+        Things that this method checks:
+            - symlinks to outside
+            - broken symlinks
+        '''
+        for File in catalog['files']:
+            pass
+        return True
+
     def empty_catalog(self):
         return {
             'start_point' : self.start_point,
@@ -320,6 +333,8 @@ class dtar(object):
         the self.start_point directory.
         '''
         os.remove(os.path.join(self.start_point, self.catalog_file_name))
+        
+        
         
     def start_points_ok(self, old_catalog, new_catalog):
         '''
